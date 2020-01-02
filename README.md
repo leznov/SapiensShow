@@ -12,5 +12,5 @@ Simple simulation of nature selection (in theory)
 - [x] changing the speed of the animation loop
 - [x] dynamically create new balls
 - [x] getting manual control over any of the balls
-- [] **circle vs circle** collision detection
-- [] tiles map
+- [ ] **circle vs circle** collision detection
+- [ ] tiles map
