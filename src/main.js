@@ -289,11 +289,9 @@ function collisionDetection(ball, mode){
 
         if(ball.x + ball.dx < ball.radius || ball.x + ball.dx > canvas.width-ball.radius){
             ball.dx = -ball.dx;
-           // if (mode == 'manual') ball.x = canvas.width-ball.radius;
         }
         if(ball.y + ball.dy < ball.radius || ball.y + ball.dy > canvas.height-ball.radius){
             ball.dy = -ball.dy;
-           // if (mode == 'manual') ball.y = canvas.height-ball.radius;
         }
 
     }else {
@@ -426,73 +424,6 @@ function toggleControl(e){
 
 
 
-
-// Draw paddle (just for learning)
-let paddleSize = { width: 150, height: 20 };
-
-let paddleMaxSpeed = 5;
-let paddleCurrentSpeed = 0;
-
-ctx.fillStyle = '#0ff';
-
-let paddlePosition = {
-    x: GAME_WIDTH/2 - paddleSize.width/2,
-    y: GAME_HEIGHT - paddleSize.height - 10
-}
-
-function moveLeft(){
-    paddleCurrentSpeed = -paddleMaxSpeed;
-}
-
-function moveRight(){
-    paddleCurrentSpeed = paddleMaxSpeed;
-}
-
-function padStop(){
-
-    paddleCurrentSpeed = 0;
-
-}
-
-function paddleDraw(){
-
-    ctx.fillRect(paddlePosition.x, paddlePosition.y, paddleSize.width, paddleSize.height);
-
-}
-
-function paddleUpdate(deltaTime){
-
-    paddlePosition.x += paddleCurrentSpeed;
-
-    if(paddlePosition.x < 0) paddlePosition.x = 0;
-
-    if(paddlePosition.x + paddleSize.width > GAME_WIDTH) paddlePosition.x = GAME_WIDTH - paddleSize.width;
-
-    // let speed = 3;
-
-    // let firstPosition = paddlePosition.x;
-
-    // if (speed == 3){
-    //     paddlePosition.x += 3 / deltaTime;
-    // }else if (speed == 5){
-    //     paddlePosition.x += 5 / deltaTime;
-    // }else if (speed == 7){
-    //     paddlePosition.x += 7 / deltaTime;
-    // }else if (speed == 60){
-    //     paddlePosition.x += 60 / deltaTime;
-    // }
-
-    // let secondPosition = paddlePosition.x;
-
-
-    // console.log(secondPosition - firstPosition);
-    
-}
-
-paddleDraw();
-
-
-
 // Character
 let charSize = { width: 48, height: 48 };
 let charPosition = { x: 10, y: 10 };
@@ -572,44 +503,6 @@ function goFromTo(x1, y1, x2, y2){
 function getRandom(max){
     return Math.floor(Math.random() * Math.floor(max));
 }
-
-
-
-// Inputs
-document.addEventListener("keydown", event => {
-
-    //alert(event.keyCode);
-    switch(event.keyCode){
-        case 37:
-            moveLeft();
-            break;
-
-        case 39:
-            moveRight();
-            break;
-
-        case 32:
-            randomPath();
-            break;
-    }
-});
-
-document.addEventListener("keyup", event => {
-
-    switch(event.keyCode){
-        case 37:
-            if (paddleCurrentSpeed < 0)
-                padStop();
-            break;
-
-        case 39:
-            if (paddleCurrentSpeed > 0)
-                padStop();
-            break;
-    }
-});
-
-
 
 
 
