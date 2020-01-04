@@ -3,8 +3,8 @@
 const canvas = document.getElementById("screen");
 const ctx = canvas.getContext("2d");
 
-const GAME_WIDTH = 800;
-const GAME_HEIGHT = 600;
+const CANVAS_WIDTH = 800;
+const CANVAS_HEIGHT = 600;
 
 // Images
 //const charBender = document.getElementById("bender");
@@ -21,8 +21,8 @@ document.getElementById('newBall').addEventListener('click', createNewBall);
 document.getElementById('takeControl').addEventListener('click', toggleControl);
 document.getElementById('freeTheBall').addEventListener('click', toggleControl);
 
-// Controls
 
+// Controls
 let ballUnderControlID = 0;
 
 let leftPressed = false;
@@ -57,7 +57,7 @@ let showData = false;
 
 document.addEventListener('keydown', e => {
 
-    // Key values: https://developer.mozilla.org/ru/docs/Web/API/KeyboardEvent/key/Key_Values
+    // Key values: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values
     // TEST:
     // console.log(`e.key: ${e.key}`);
     switch(e.key){
@@ -94,7 +94,7 @@ document.addEventListener('keydown', e => {
 
 document.addEventListener('keyup', e => {
 
-    // Key values: https://developer.mozilla.org/ru/docs/Web/API/KeyboardEvent/key/Key_Values
+    // Key values: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values
     // TEST:
     // console.log(`e.key: ${e.key}`);
     
@@ -162,7 +162,7 @@ function mainLoop(timestamp){
     
     
     // Clear canvas
-    ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+    ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
     newBall.draw();
     animate();
@@ -231,17 +231,13 @@ document.getElementById('stopAll').addEventListener('click', function(){
 
 
 
-
-
 function animate(){
     
     for(const ball of balls){
 
-        
         if(ball.auto){
-
             // For autonomous balls
-
+            
             // Moving
             ball.x += ball.dx;
             ball.y += ball.dy;
@@ -250,10 +246,9 @@ function animate(){
             //ball.dy += 0.90;
 
             collisionDetection(ball, 'auto');
-
         }else{ 
 
-            // for manual controled balls
+            // for manual controlled balls
             if (leftPressed) {
                 ball.x -= ball.manualSpeed;
             }else if(rightPressed){
@@ -263,14 +258,9 @@ function animate(){
             }else if(downPressed){
                 ball.y += ball.manualSpeed;
             }
-            
 
             collisionDetection(ball, 'manual');
-
         }
-        
-
-        
 
         ball.draw();
 
@@ -460,17 +450,17 @@ function charUpdate(deltaTime, move){
     }
     console.log(hunger);
 
-    if (charPosition.x + charSize.width > GAME_WIDTH || charPosition.x < 0){
+    if (charPosition.x + charSize.width > CANVAS_WIDTH || charPosition.x < 0){
         charSpeed.x = -charSpeed.x;
     }
-    if (charPosition.y + charSize.height > GAME_HEIGHT || charPosition.y < 0){
+    if (charPosition.y + charSize.height > CANVAS_HEIGHT || charPosition.y < 0){
         charSpeed.y = -charSpeed.y;
     }
 }
 
 function randomPath(){
-    randomX = getRandom(GAME_WIDTH - charSize.width);
-    randomY = getRandom(GAME_HEIGHT - charSize.height);
+    randomX = getRandom(CANVAS_WIDTH - charSize.width);
+    randomY = getRandom(CANVAS_HEIGHT - charSize.height);
     needMove = 1;
 }
 
